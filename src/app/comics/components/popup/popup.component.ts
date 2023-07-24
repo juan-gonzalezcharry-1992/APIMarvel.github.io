@@ -11,7 +11,7 @@ import { Comic } from '../../core/comics-interface';
 export class PopupComponent {
   constructor(
     public dialogRef: MatDialogRef<PopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Comic,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
 
     this.data;
