@@ -1,0 +1,27 @@
+<app-nav-bar></app-nav-bar>
+
+<h1 class="textTitle">Marvel Series</h1>
+
+<div class="loading" *ngIf="loading">
+  <img src="../assets/images/marvel-intro.gif" alt="loading">
+</div>
+
+<form class="search-container">
+  <input type="text" id="search-bar" [(ngModel)]="searchText" name="search" placeholder="Buscar un cómic">
+</form>
+
+<div class="flex-container section" *ngIf="results && !loading">
+  <div class="card-picture" *ngFor="let comic of results | searchPipe: searchText">
+    <img src="{{comic.thumbnail.path + '.' + comic.thumbnail.extension}}" alt="foto">
+    <div class="card-description" (click)="AbrirPop()">
+      <p class="t1">{{comic.title}}</p>
+      <p class="text">Comics Relacionados</p>
+      <p class="textComic" *ngFor="let item of comic.stories.items">
+         {{item.name}}
+      </p>
+    </div>
+  </div>
+</div>
+
+
+

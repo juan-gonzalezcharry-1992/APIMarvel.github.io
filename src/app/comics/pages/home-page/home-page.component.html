@@ -1,0 +1,57 @@
+<app-nav-bar></app-nav-bar>
+
+<h1 class="textTitle">Marvel Comics</h1>
+
+<div class="loading" *ngIf="loading">
+  <img src="../assets/images/marvel-intro.gif" alt="loading">
+</div>
+
+<form class="search-container">
+  <input type="text" id="search-bar" [(ngModel)]="searchText" name="search" placeholder="Buscar un cómic">
+</form>
+
+<div class="flex-container section" *ngIf="results && !loading">
+  <div class="card-picture" *ngFor="let comic of results | searchPipe: searchText">
+    <img src="{{comic.thumbnail.path + '.' + comic.thumbnail.extension}}" alt="foto">
+    <div class="card-description">
+      <p class="t1">{{comic.title}}</p>
+      <p class="text">Comics Relacionados</p>
+      <p class="textComic" *ngFor="let item of comic.stories.items">
+         {{item.name}}
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!--<div class="row justify-content-center">
+  <div class="card m-2" style="width: 18rem;" *ngFor="let comic of results | searchPipe: searchText ; let i = index ;">
+    <img src="{{comic.thumbnail.path + '.' + comic.thumbnail.extension}}" alt="foto">
+    <div class="card-body">
+      <h5 class="card-title fs-6 p-2">{{comic.title}}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let item of comic.stories.items">{{comic.title}}</li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+</div>
+<div class="contenedor" *ngIf="results && !loading">
+  <div class="cardComic" *ngFor="let comic of results | searchPipe: searchText">
+    <img class="image" src="{{comic.thumbnail.path + '.' + comic.thumbnail.extension}}" alt="" srcset="">
+    <div class="cardComicBody">
+      <div class=" card-description">
+        <p>{{comic.title}}</p>
+      </div>
+      <ul class="lista">
+        <li class="list" *ngFor="let item of comic.stories.items">{{item.name}}</li>
+      </ul>
+    </div>
+
+
+  </div>
+
+</div>-->
